@@ -1,3 +1,4 @@
+import com.techreturners.bubbleteaordersystem.model.BubbleTea;
 import com.techreturners.bubbleteaordersystem.service.BubbleTeaRouletteService;
 import com.techreturners.bubbleteaordersystem.model.BubbleTeaTypeEnum;
 
@@ -6,8 +7,11 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 import testhelper.RandomStub;
 
+import java.util.EnumSet;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class BubbleTeaRouletteServiceTest {
 
@@ -46,29 +50,11 @@ public class BubbleTeaRouletteServiceTest {
 
     @ParameterizedTest
     @EnumSource(BubbleTeaTypeEnum.class)
-    public void shouldReturnPeachTeaTypeWithPatametersGetRandomBubbleTeaTypeIsCalled() {
-
-
-        /**@todo: check exceptions handling in junit5*/
-  /*  @Test //(expected: ArrayIndexOutOfBoundsException.class)
-    public void shouldReturnErrorWhenGetRandomBubbleTeaTypeIsCalled() {
-        RandomStub randomStub = new RandomStub(99);
-        BubbleTeaRouletteService bubbleTeaRouletteService = new BubbleTeaRouletteService(randomStub);
-        Exception exception = assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
-            BubbleTeaTypeEnum.values();
-        });
-        //Arrange
-
-
-        //Act
-        var actualResult = bubbleTeaRouletteService.getRandomBubbleTeaType();
-        var expectedResult = BubbleTeaTypeEnum.PeachIceTea;
-
-        //Assert
-        assertThrows(actualResult,exception) ;
-    //(expectedResult, actualResult);
-
-    }*/
+    public void shouldReturnEachTeaTypeWithParametersGetRandomBubbleTeaTypeIsCalled(BubbleTeaTypeEnum bttEnum) {
+        EnumSet<BubbleTeaTypeEnum> teas =
+                EnumSet.of(BubbleTeaTypeEnum.MatchaMilkTea, BubbleTeaTypeEnum.OolongMilkTea, BubbleTeaTypeEnum.JasmineMilkTea, BubbleTeaTypeEnum.PeachIceTea, BubbleTeaTypeEnum.LycheeIceTea);
+        assertTrue(teas.contains(bttEnum));
     }
+
 }
 
