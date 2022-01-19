@@ -2,6 +2,8 @@ import com.techreturners.bubbleteaordersystem.service.BubbleTeaRouletteService;
 import com.techreturners.bubbleteaordersystem.model.BubbleTeaTypeEnum;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
 import testhelper.RandomStub;
 
 import static org.junit.Assert.assertEquals;
@@ -40,7 +42,14 @@ public class BubbleTeaRouletteServiceTest {
         assertEquals(expectedResult, actualResult);
 
     }
-    /**@todo: check exceptions handling in junit5*/
+
+
+    @ParameterizedTest
+    @EnumSource(BubbleTeaTypeEnum.class)
+    public void shouldReturnPeachTeaTypeWithPatametersGetRandomBubbleTeaTypeIsCalled() {
+
+
+        /**@todo: check exceptions handling in junit5*/
   /*  @Test //(expected: ArrayIndexOutOfBoundsException.class)
     public void shouldReturnErrorWhenGetRandomBubbleTeaTypeIsCalled() {
         RandomStub randomStub = new RandomStub(99);
@@ -60,4 +69,6 @@ public class BubbleTeaRouletteServiceTest {
     //(expectedResult, actualResult);
 
     }*/
+    }
 }
+
